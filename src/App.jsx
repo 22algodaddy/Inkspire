@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import authService from "./appwrite/auth";
 import {login,logout} from "./store/authSlice"
-import { Header,Footer } from './components';
+import { Header,Footer, Login } from './components';
 function App() {
   const [loading,setLoading]=useState(true); //loading is created since getting data from backend might take time, based on state
                                             //based on loading state we can do conditonal rendering
@@ -21,6 +21,7 @@ function App() {
       <div className='w-full block'>
         <Header/>
          <main>
+          <Login />
            {/*<Outlet/>*/}
          </main>
         <Footer/>
