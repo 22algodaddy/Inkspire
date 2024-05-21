@@ -54,7 +54,7 @@ export class Service{
                 return true;
         }catch(err){console.log(err);return false;}
     }
-    async getPosts(slug){
+    async getPost(slug){
         try{
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
@@ -76,7 +76,7 @@ export class Service{
     }
     async uploadFile(file){
         try{
-            //this will return fileID
+            //this will return file, "https://appwrite.io/docs/references/cloud/models/file" for more info
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),

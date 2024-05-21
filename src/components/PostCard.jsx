@@ -1,7 +1,7 @@
 import authService from "../appwrite/config";
 import {Link} from "react-router-dom"
 
-function PostCard({$id,title,featuredImage}){//$id is synatx of appwrite $id as a whol represents id
+export default function PostCard({$id,title,featuredImage}){//$id is synatx of appwrite $id as a whol represents id
     return(
         <Link to={`/post/${$id}`}>
             <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
