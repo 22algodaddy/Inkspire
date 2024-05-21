@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import service from "../../appwrite/config";
-import {Container,PostCard} from "../../components";
+import service from "../appwrite/config";
+import {Container,PostCard} from "../components";
 
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
+                                No posts found
                             </h1>
                         </div>
                     </div>
@@ -26,4 +26,17 @@ export default function Home() {
             </div>
         )
     }
+    return(
+        <div className="w-full py-8">
+            <Container>
+                <div className="flex flex-wrap">
+                    {
+                        posts.map((post)=>(
+                            <PostCard key={post.$id} {...post} /> ))
+                        }  
+                </div>
+
+            </Container> 
+         </div>   
+    )             
 }

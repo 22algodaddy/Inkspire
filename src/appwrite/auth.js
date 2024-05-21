@@ -9,13 +9,14 @@ export class AuthService{
         .setEndpoint(conf.appwriteUrl)
         .setProject(conf.appwriteProjectid);
         this.account = new Account(this.client);
+        console.log(this.account);
     }
     async createAccount({email, password, name}){
         try{
             const userAccount = await this.account.create(ID.unique(),email, password, name);
             if(userAccount){
                 //if user account is created successfully, redirect user to login page
-                return this.account.login({email, password});
+                return this.login({email, password});
             }
             else return userAccount;
 
@@ -23,12 +24,11 @@ export class AuthService{
             console.log(err);
         }
     }
-    async login({email, password}){
-        try{
-            const session = await this.account.createEmailSession(email, password);
-            return session;
-        }catch(err){
-            console.log(err);
+    async login({email, password}) {
+        try {
+            return await this.account.createEmailPasswordSession(email, password);
+        } catch (error) {
+            throw error;
         }
     }
     async getCurrentUser(){  //this function retuns which user is logged in, suppose we directly clicked on the home page, account.get() retuns current user deatils
@@ -39,7 +39,7 @@ export class AuthService{
             }
             else return null;
         }catch(err){
-            console.log(err);
+            throw err;
         }
     }
     async logout(){

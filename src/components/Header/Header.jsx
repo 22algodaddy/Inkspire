@@ -32,34 +32,34 @@ export default function Header(){
       },
       ]
     return(
-        <header className="py-3 shadow bg-gray-500">
-          <Container>
-            <nav className="flex">
-              <div className="mr-4">
-                <Link to="/">
-                 <Logo width="70px"/>
-                </Link>
-              </div>
-              <ul className="flex ml-auto">
-                {
-                    navItems.map((item)=>
-                        item.active ? (
-                            <li key={item.name}>
-                                <button onClick={()=>navigate(item.slug)}
-                                className="inline-block px-6 py-2 duration-300 hover:opacity-75 bg-gray-700 text-white rounded-lg"
-                                >
-                                    {item.name}
-                                </button>
-                            </li>
-                        ):(null)
-                    )
-                }
-                {
-                    authStatus ? <LogoutBtn/> : null
-                }
-              </ul>
-            </nav>
-          </Container>  
-        </header>
+      <header className="py-3 shadow-md bg-gray-800">
+  <Container>
+    <nav className="flex items-center">
+      <div className="mr-4">
+        <Link to="/">
+          <Logo width="70px" />
+        </Link>
+      </div>
+      <ul className="flex ml-auto space-x-4">
+        {navItems.map((item) =>
+          item.active ? (
+            <li key={item.name}>
+              <button
+                onClick={() => navigate(item.slug)}
+                className="px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out transform bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-500 hover:scale-105"
+              >
+                <span className="font-semibold text-white tracking-wide uppercase shadow-md hover:shadow-lg">
+                  {item.name}
+                </span>
+              </button>
+            </li>
+          ) : null
+        )}
+        {authStatus && <LogoutBtn />}
+      </ul>
+    </nav>
+  </Container>
+</header>
+
     )
 }

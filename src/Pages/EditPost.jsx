@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
-import {Conatiner,PostForm} from "../../components"
-import service from "../../appwrite/config";
+import {Container,PostForm} from "../components"
+import service from "../appwrite/config";
 import { useParams,useNavigate } from "react-router-dom";
 export default function EditPost() {
     const [post,setPost] = useState(null);
@@ -19,9 +19,9 @@ export default function EditPost() {
         post ? 
         (
             <div className="py-8">
-                <Conatiner>
+                <Container>
                     <PostForm post={post} />
-                </Conatiner>
+                </Container>
             </div>
         )
         : null

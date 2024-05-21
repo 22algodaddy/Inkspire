@@ -10,8 +10,12 @@ export default function LogoutBtn(){
     }
     return(
         <button 
-        className="px-6 py-3 bg-gradient-to-r from-red-400 to-red-600 text-white font-semibold rounded-lg shadow-md hover:from-red-500 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transform transition-transform duration-300 hover:scale-105">
-            Logout
+        className="px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out transform bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-red-600 hover:scale-105"
+         onClick={logoutHandler}
+         >
+             <span className="font-semibold text-white tracking-wide uppercase shadow-md hover:shadow-lg">
+                  Logout
+                </span>
         </button>
 )
 }

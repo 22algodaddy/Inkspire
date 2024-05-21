@@ -8,11 +8,12 @@ import {Link,useNavigate} from "react-router-dom"
 
 
 export default function Signup(){
+    console.log("SignupPage")
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {register,handleSubmit} = useForm();
     const [err,Seterr] = useState("")
-    const createAccount = async(data)=>{
+    const create = async(data)=>{
         Seterr("")//emptying out the error
         try{
             const Userdata = await authService.createAccount(data);
@@ -35,7 +36,7 @@ export default function Signup(){
             </div>
             <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
             <p className="mt-2 text-center text-base text-black/60">
-                Already have an account?&nbsp;
+                Already have an account
                 <Link
                     to="/login"
                     className="font-medium text-primary transition-all duration-200 hover:underline"

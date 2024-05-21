@@ -14,15 +14,19 @@ export default function Login(){
     const login = async (data)=>{
         Seterr("");
         try{
+          //  console.log(data)
             const session = await authService.login(data);
+            console.log(session)
             if(session){
                 const userdata = await authService.getCurrentUser();
+                console.log(userdata)
                 if(userdata)dispatch(storeLogin(userdata));
                 navigate("/")
             }
 
         }catch(err){
             Seterr(err.message);
+            console.log(err)
         }
     }
 
@@ -36,7 +40,7 @@ export default function Login(){
                 </div>
                     <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
                     <p className="mt-2 text-center text-base text-black/60">
-                        Don&apos;t have any account?&nbsp;
+                        Don't have any account 
                         <Link
                         to="/signup"
                         className="font-medium text-primary transition-all duration-200 hover:underline"

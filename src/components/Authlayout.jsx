@@ -2,7 +2,7 @@ import {useState , useEffect} from "react"
 import {useSelector} from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-export default function Applayout({children,authentication=true}){
+export default function Authlayout({children,authentication=true}){
     const navigate = useNavigate();
     const authstatus = useSelector((state)=>(state.auth.status));
     const [loader,setLoader] = useState(true);

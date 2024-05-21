@@ -23,10 +23,10 @@ export class Service{
                     content,
                     featuredImage,
                     status,
-                    userId
+                    userId,
                 }
             )
-        }catch(err){console.log(err);}
+        }catch(err){throw err}
 
     }
     async updatePost(slug,{title,content, featuredImage, status, userId}){
@@ -101,4 +101,4 @@ export class Service{
     }
 }
 const service = new Service();
-export default Service;
+export default service;
