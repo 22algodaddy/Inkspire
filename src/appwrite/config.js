@@ -14,7 +14,7 @@ export class Service{
     }
     async createPost({title, slug, content, featuredImage, status, userId}){
         try{
-            await this.databases.createDocument(
+           return  await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
@@ -31,7 +31,7 @@ export class Service{
     }
     async updatePost(slug,{title,content, featuredImage, status, userId}){
         try{
-            await this.databases.updateDocument(
+            return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
@@ -59,10 +59,10 @@ export class Service{
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug
+                slug,
             )
 
-        }catch(err){console.log(err);}
+        }catch(err){throw err;}
     }
     async getPosts(queries=[Query.equal("status", "active")]){
         try{
@@ -82,7 +82,7 @@ export class Service{
                 ID.unique(),
                 file
             )
-        }catch(err){console.log(err);return false;}
+        }catch(err){throw err}
     }
     async deleteFile(fileID){
         try{

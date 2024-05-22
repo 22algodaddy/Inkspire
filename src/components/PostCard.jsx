@@ -13,7 +13,7 @@ export default function PostCard({$id,title,featuredImage}){//$id is synatx of a
     />
   </div>
   <div className="p-4">
-    <h2 className="text-2xl font-bold text-gray-800 mb-2">{title}</h2>
+    <h2 className="text-lg font-bold text-white bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent shadow-lg animate-pulse">{title}</h2>
   </div>
 </div>
 

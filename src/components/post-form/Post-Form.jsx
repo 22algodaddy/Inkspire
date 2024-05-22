@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PostForm({ post }) {
+    alert("Please refresh this page before proceeding ahead!!!");
+    const userData = useSelector((state) => state.auth.userData.userData);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
@@ -16,10 +18,9 @@ export default function PostForm({ post }) {
     });
 
     const navigate = useNavigate();
-    const userData = useSelector((state) => (state.auth.userData));
-    console.log(userData);
     const submit = async (data) => {
         if (post) {
+            alert("Please refresh this page before proceeding ahead!!!");
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
@@ -30,18 +31,22 @@ export default function PostForm({ post }) {
                 ...data,
                 featuredImage: file ? file.$id : undefined,
             });
-
+            console.log("dbPost from if condition",dbPost)
             if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
+                navigate("/")
             }
         } else {
+            console.log("UserData.$id",userData.$id)
             const file = await appwriteService.uploadFile(data.image[0]);
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
-
-                if (dbPost) {
+              
+                console.log("$id", userData.$id);
+                data.userId=userData.$id
+                const dbPost = await appwriteService.createPost({...data});
+              //  console.log(dbPost);
+                if(dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
             }

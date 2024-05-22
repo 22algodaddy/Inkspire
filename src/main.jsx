@@ -55,6 +55,7 @@ const router = createBrowserRouter([
             element: (
                 <AuthLayout authentication>
                     {" "}
+                    <h1>Edit Post</h1>
                     <EditPost />
                 </AuthLayout>
             ),
@@ -66,7 +67,6 @@ const router = createBrowserRouter([
     ],
 },
 ])
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
