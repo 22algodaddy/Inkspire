@@ -10,17 +10,31 @@ function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    authService.getCurrentUser()
-    .then((userData) => {
-      if (userData) {
-        dispatch(login({userData}))
-      } else {
-        dispatch(logout())
-      }
-    })
-    .finally(() => setLoading(false))
-  }, [])
+  // useEffect(() => {
+  //   authService.getCurrentUser()
+  //   .then((userData) => {
+  //     if (userData) {
+  //       dispatch(login({userData}))
+  //     } else {
+  //       dispatch(logout())
+  //     }
+  //   })
+  //   .finally(() => setLoading(false))
+  // }, [])
+  useEffect(()=>{
+    const fetchUSer= async()=>{
+       try{
+        const userData = await authService.getCurrentUser();
+        if(userData){
+          dispatch(login({userData}))
+        }else{
+          dispatch(logout())
+        }
+       }catch(err){throw err;}
+       finally{setLoading(false)}
+    };
+    fetchUSer()
+  },[dispatch]);
   
   return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
