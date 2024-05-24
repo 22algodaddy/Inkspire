@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux"
 import { logout } from "../../store/authSlice"
 import authService from "../../appwrite/auth"
 import { useNavigate } from "react-router-dom";
-import {LoginPage} from "../../Pages"
 export default function LogoutBtn(){
     const navigate = useNavigate();
     const dispatch = useDispatch();

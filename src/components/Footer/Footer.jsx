@@ -2,138 +2,36 @@ import {Link} from "react-router-dom"
 import Logo from "../Logo"
 export default function Footer(){
     return(
-        <section className="relative overflow-hidden py-10 bg-gray-400 border border-t-2 border-t-black">
-        <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="-m-6 flex flex-wrap">
-                <div className="w-full p-6 md:w-1/2 lg:w-5/12">
-                    <div className="flex h-full flex-col justify-between">
-                        <div className="mb-4 inline-flex items-center">
-                            <Logo width="100px" />
-                        </div>
-                        <div>
-                            <p className="text-sm text-gray-600">
-                                &copy; Copyright 2023. All Rights Reserved by DevUI.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-                    <div className="h-full">
-                        <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                            Company
-                        </h3>
-                        <ul>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Features
-                                </Link>
-                            </li>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Pricing
-                                </Link>
-                            </li>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Affiliate Program
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Press Kit
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-                    <div className="h-full">
-                        <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                            Support
-                        </h3>
-                        <ul>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Account
-                                </Link>
-                            </li>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Help
-                                </Link>
-                            </li>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Contact Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Customer Support
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="w-full p-6 md:w-1/2 lg:w-3/12">
-                    <div className="h-full">
-                        <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                            Legals
-                        </h3>
-                        <ul>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Terms &amp; Conditions
-                                </Link>
-                            </li>
-                            <li className="mb-4">
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Privacy Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                    to="/"
-                                >
-                                    Licensing
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <footer className="fixed bottom-0 left-0 w-full flex flex-col items-center justify-center space-y-30 p-10 bg-gray-400">
+
+
+        <nav class="flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
+            <a class="hover:text-gray-900" href="#">Home</a>
+            <a class="hover:text-gray-900" href="#">About</a>
+            <a class="hover:text-gray-900" href="#">Services</a>
+            <a class="hover:text-gray-900" href="#">Media</a>
+            <a class="hover:text-gray-900" href="#">Gallery</a>
+            <a class="hover:text-gray-900" href="#">Contact</a>
+        </nav>
+    
+        <div class="flex justify-center space-x-5">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+            </a>
+            <a href="https://messenger.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
+            </a>
         </div>
-    </section>
+        <p class="text-center text-gray-700 font-medium">&copy; 2022 Company Ltd. All rights reservered.</p>
+    </footer>
     )
 }

@@ -32,7 +32,8 @@ export default function Header(){
       },
       ]
     return(
-      <header className="py-3 shadow-md bg-gray-800">
+      <header className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+
   <Container>
     <nav className="flex items-center">
       <div className="mr-4">
