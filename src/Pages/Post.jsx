@@ -61,6 +61,7 @@ export default function Post() {
                 </div>
                 <div className="browser-css">
                     {parse(post.content)}
+                    <h1>Dhruv</h1>
                     </div>
             </Container>
         </div>

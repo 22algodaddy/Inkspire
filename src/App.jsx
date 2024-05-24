@@ -46,7 +46,7 @@ function App() {
         <Footer />
       </div>
     </div>
-  ) : null
+  ) : <h1>Please Wait</h1>
 }
 
 export default App
