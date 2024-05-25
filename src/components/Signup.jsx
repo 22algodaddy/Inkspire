@@ -15,6 +15,7 @@ export default function Signup(){
     const [err,Seterr] = useState("")
     const create = async(data)=>{
         Seterr("")//emptying out the error
+        if(data.password.length>7 && data.password.length<21){
         try{
             const Userdata = await authService.createAccount(data);
             if(Userdata){
@@ -25,6 +26,7 @@ export default function Signup(){
 
         }catch(err){
             Seterr(err.message)}//Catch block err has property named message which conatins the error message
+        }else{alert("Min Password length is 8 and Max is 20!!!")}
     }
     return(
         <div className="flex items-center justify-center">
@@ -73,8 +75,6 @@ export default function Signup(){
                     placeholder="Enter your password"
                     {...register("password", {
                         required: true,
-                        minLength: 6,
-                        maxLength: 20,
                     })}
                     />
                     <Button type="submit" className="w-full">

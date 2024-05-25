@@ -11,10 +11,10 @@ export default function Login(){
     const navigate = useNavigate();
     const {register,handleSubmit} = useForm();
     const [err,Seterr] = useState("");
-    const login = async (data)=>{
+    const login = async(data)=>{
         Seterr("");
         try{
-          //  console.log(data)
+            console.log("Data from Login: ",data)
             const session = await authService.login(data);
             console.log(session)
             if(session){
@@ -72,8 +72,6 @@ export default function Login(){
                             className="w-full border border-gray-300 rounded-md p-3"
                             {...register("password",{
                                 required:true,
-                                minLength:6,
-                                maxLength:20
                             })}></input>
                             <Button 
                             type="submit"
@@ -87,3 +85,8 @@ export default function Login(){
 
 //Regex is only this much: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 //Regex is written between forward slash and back slash
+//The useForm hook from react-hook-form provides the register function. 
+//This function is used to register the input fields so that react-hook-form can keep track of their values.
+//The form element has an onSubmit attribute that calls handleSubmit(login). 
+//This means when the form is submitted, handleSubmit first gathers all the form data and then calls login 
+//with this data as its argument.
