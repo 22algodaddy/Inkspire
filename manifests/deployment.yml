@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-app-inkspire-container
-        image: dhruvchoubey99/inkspire-app:latest
+        image: IMAGE_PLACEHOLDER
         ports:
         - containerPort: 80    
