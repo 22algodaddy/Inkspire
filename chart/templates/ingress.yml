@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-{{ include "inkspire.fullname" . }}
+  labels:
+    app: { { include "inkspire.name" . } }
+    chart: { { include "inkspire.chart" . } }
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn:
+      { { default "" .Values.ingress.certificateArn } }
+spec:
+  rules:
+    - host: { { .Values.ingress.hostname } }
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: { { include "react-app.fullname" . } }
+                port:
+                  number: { { .Values.service.port } }

@@ -1,0 +1,12 @@
+replicaCount: 2
+image:
+  repository: "<ECR_REPO_URL>"
+  tag: "latest"
+  pullPolicy: Always
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  hostname: "app.example.com"
+  certificateArn: "<ACM_CERT_ARN>"
