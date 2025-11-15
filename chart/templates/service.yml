@@ -8,4 +8,4 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: 80
   selector:
-    app: {{ include "react-app.name" . }}
+    app: my-app-inkspire
