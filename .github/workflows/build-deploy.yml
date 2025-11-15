@@ -42,17 +42,11 @@ jobs:
         run: |
           echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_NAME}" >> $GITHUB_ENV
 
-      - name: Fetch ACM ARN from SSM
-        id: fetch-arn
-        run: |
-          ARN=$(aws ssm get-parameter --name "/react-devops/acm_cert_arn" --query Parameter.Value --output text)
-          echo "ACM_ARN=$ARN" >> $GITHUB_ENV
 
       - name: Update Helm values (image & certificate)
         run: |
           # replace placeholders in chart/values.yaml
           sed -i "s|<ECR_REPO_URL>|${ECR_REGISTRY}|g" chart/values.yaml
-          sed -i "s|<ACM_CERT_ARN>|${ACM_ARN}|g" chart/values.yaml
           # set tag to latest (or use commit SHA)
           yq eval '.image.tag = "latest"' -i chart/values.yaml
 
