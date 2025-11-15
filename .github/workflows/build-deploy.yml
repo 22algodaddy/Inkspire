@@ -1,0 +1,59 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - application-changes
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPO_NAME: react-devops-repo  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: inkspire-env
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.APP_GITHUB_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t $ECR_REPO_NAME:latest .
+          docker tag $ECR_REPO_NAME:latest ${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_NAME}:latest
+          docker push ${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_NAME}:latest
+
+      - name: Get ECR repo url
+        run: |
+          echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_NAME}" >> $GITHUB_ENV
+
+
+      - name: Update Helm values (image & certificate)
+        run: |
+          # replace placeholders in chart/values.yaml
+          sed -i "s|<ECR_REPO_URL>|${ECR_REGISTRY}|g" chart/values.yaml
+          # set tag to latest (or use commit SHA)
+          yq eval '.image.tag = "latest"' -i chart/values.yaml
+
+      - name: Commit and push chart updates
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "github-actions"
+          git add chart/values.yaml
+          git commit -m "ci: update image and certificate (github actions)" || echo "no changes"
+          git push
+
