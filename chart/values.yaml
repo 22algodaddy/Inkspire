@@ -1,14 +1,11 @@
 replicaCount: 1
-
 image:
-  repository: "<ECR_REPO_URL>"
+  repository: "201409139288.dkr.ecr.us-east-1.amazonaws.com/react-devops-repo"
   tag: "latest"
   pullPolicy: Always
-
 service:
   type: ClusterIP
   port: 80
-
 ingress:
   enabled: true
   hostname: ""
